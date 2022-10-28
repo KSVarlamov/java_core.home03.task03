@@ -26,9 +26,8 @@ public class Main {
 
                 FileOutputStream fot = new FileOutputStream(tmp);
                 byte[] buff = zis.readAllBytes();
-                fot.write(buff);
 
-                fot.flush();
+                fot.write(buff);
                 fot.close();
             }
         } catch (IOException e) {
