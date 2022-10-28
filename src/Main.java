@@ -19,14 +19,11 @@ public class Main {
 
     public static void openZip(String zipPath, String unzipPath) {
         try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipPath))) {
-            while (true) {
-                ZipEntry entry = zis.getNextEntry();
-                if (entry == null) break;
+            ZipEntry entry;
+            while ((entry = zis.getNextEntry()) != null) {
                 File tmp = new File(unzipPath + entry.getName());
-
                 FileOutputStream fot = new FileOutputStream(tmp);
                 byte[] buff = zis.readAllBytes();
-
                 fot.write(buff);
                 fot.close();
             }
